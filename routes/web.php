@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\frontend\IndexController;
 use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\frontend\LanguageController;
 use App\Http\Controllers\admin\AdminProfileController;
 use App\Http\Controllers\backend\SubCategoryController;
 use App\Http\Controllers\backend\SubSubCategoryController;
@@ -134,7 +135,7 @@ Route::controller(SliderController::class)->middleware('auth:admin')->prefix('sl
 
 Route::get('admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 
-
+/////
 
 // User All Routes
 Route::get('/', [IndexController::class, 'index']);
@@ -144,4 +145,10 @@ Route::get('user/logout', [IndexController::class, 'userLogout'])->name('user.lo
 Route::get('user/change/password', [IndexController::class, 'userChangePassword'])->name('user.change.password');
 Route::post('user/change/password', [IndexController::class, 'userPasswordStore'])->name('user.password.store');
 
+/////// language All Routes /////////////
 
+Route::controller(LanguageController::class)->prefix('language/')->name('language.')->group(function(){
+    Route::get('english', 'english')->name('english');
+    Route::get('arabic', 'arabic')->name('arabic');
+
+});
