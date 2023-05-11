@@ -138,12 +138,17 @@ Route::get('admin/logout', [AdminController::class, 'destroy'])->name('admin.log
 /////
 
 // User All Routes
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])->name('user.index');
 Route::get('user/profile', [IndexController::class, 'userProfile'])->name('user.profile')->middleware('auth');
 Route::post('user/profile', [IndexController::class, 'userProfileStore'])->name('user.profile.store');
 Route::get('user/logout', [IndexController::class, 'userLogout'])->name('user.logout');
 Route::get('user/change/password', [IndexController::class, 'userChangePassword'])->name('user.change.password');
 Route::post('user/change/password', [IndexController::class, 'userPasswordStore'])->name('user.password.store');
+
+Route::get('product/details/{id}/{slug}', [IndexController::class, 'productDetails'])->name('product.details');
+Route::get('product/tag/{tag}', [IndexController::class, 'TagWiseProduct'])->name('product.tag');
+Route::get('subcategory/product/{subcate_id}/{tag}', [IndexController::class, 'SubCatWiseProduct'])->name('product.subcategory');
+Route::get('subsubcategory/product/{subsubcat_id}/{tag}', [IndexController::class, 'SubSubCatWiseProduct'])->name('product.سعلاsubcategory');
 
 /////// language All Routes /////////////
 
